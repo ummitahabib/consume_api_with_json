@@ -30,7 +30,7 @@ class UsersScreen extends StatelessWidget {
               itemCount: users.length,
               itemBuilder: (context, index) {
                 return ListTile(
-                  title: Text(users[index].firstName),
+                  title: Text(users[index].email),
                 );
               },
             );
