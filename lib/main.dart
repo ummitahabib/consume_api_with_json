@@ -1,31 +1,29 @@
-import 'package:consume_json_placeholder/user_repo.dart';
-import 'package:consume_json_placeholder/users_list.dart';
+import 'package:consume_json_placeholder/todo_list_screen.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:dio/dio.dart';
 
 import 'api_service.dart';
+import 'todo_repository.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
     final dio = Dio();
     final apiService = ApiService(dio);
-    final usersRepository = UsersRepository(apiService: apiService);
+    final todoRepository = TodoRepository(apiService: apiService);
 
     return MultiProvider(
       providers: [
-        Provider.value(value: usersRepository),
+        Provider.value(value: todoRepository),
       ],
-      child: const MaterialApp(
+      child: MaterialApp(
         title: 'Flutter Demo',
-        home: UsersScreen(),
+        home: TodoListScreen(),
       ),
     );
   }
